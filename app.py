@@ -6,7 +6,7 @@ import numpy as np
 app = Flask(__name__)
 CORS(app)  # Apply CORS to the app
 
-# Load the SavedModels
+# Load the SavedModels=
 model_lstm = tf.saved_model.load("saved_model_lstm")
 model_lstm_attention = tf.saved_model.load("saved_model_lstm_attention")
 
