@@ -3,7 +3,6 @@
 
 <div align="center">
 
-<img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
 <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54">
 <img src="https://img.shields.io/badge/Keras-%23D00000.svg?style=for-the-badge&logo=Keras&logoColor=white">
 <img src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white">
@@ -119,7 +118,7 @@ docker images
 ```
 ![alt text](readme-img/image-15.png)
 
-```flask-docker``` adalah nama repositori (karena nama dari image itu tidak kita spesifik kan diawal pembuatan) dari Docker Image yang berhasil dibuat dari proyek Flask API sebelumnya. Sesuai dengan nama repositori yang sebelumnya dibuat di DockerHub.
+```flask-docker``` adalah nama dari Docker Image yang berhasil dibuat dari proyek Flask API sebelumnya. Disesuaikan dengan nama repositori yang sebelumnya dibuat di DockerHub.
 
 - Jalankan Docker Image menggunakan port 5000 untuk browser dari sistem host (mode detached) dengan perintah berikut: 
 
@@ -235,16 +234,16 @@ Setelah melakukan proses tag, proses push akan memakan waktu yang cukup lama, se
 ## 4. Proses Deployment ke Code Engine
 
 - Setelah ini, kita akan melalukan deployment ke Code Engine, buka IBM Cloud dan akses layanan Code Engine
-![alt text](image.png)
+![alt text](readme-img/image-24.png)
 
 - Klik tombol biru 'Let's Go!'
-![alt text](image-1.png)
+![alt text](readme-img/image-25.png)
 
 - Pada halaman ini, silakan tekan tombol biru 'Create Project +'
-![alt text](image-2.png)
+![alt text](readme-img/image-26.png)
 
-- Akan muncul tab di kanan
-![alt text](image-3.png)
+- Akan muncul tab di kanan untuk membuat project baru yang akan digunakan untuk menerima Docker Image yang sebelumnya di push ke Docker Hub
+![alt text](readme-img/image-27.png)
 
 - Pastikan :
 - Location : ```Dallas (us-south)```
@@ -254,22 +253,22 @@ Setelah melakukan proses tag, proses push akan memakan waktu yang cukup lama, se
 - Lalu tekan tombol biru 'Create Project'
 
 - Setelahnya, akan ada pilihan project di halaman pembuatan Application pada Code Engine, silakan pilih bagian 'Application'
-![alt text](image-4.png)
+![alt text](readme-img/image-28.png)
 
 - Scroll ke bawah, lalu pilih nama aplikasi, dalam kasus ini, akan digunakan nama ```flask-docker```.
-![alt text](image-5.png)
+![alt text](readme-img/image-29.png)
 
 - Pada bagian 'Code' , tekan tombol 'Configure Image' yang ada di kanan. Biarkan pilihan di **'Use an existing container image'.**
-![alt text](image-6.png)
+![alt text](readme-img/image-30.png)
 
 - Akan muncul tab di kanan, dan pilih 'registry server' yang bernama ```https://index.docker.io/v1```
-![alt text](image-7.png)
+![alt text](readme-img/image-31.png)
 
 - Untuk 'Registry secret' , pilih ```Create registry secret```
-![alt text](image-8.png)
+![alt text](readme-img/image-32.png)
 
 - Untuk pembuatan registry secret, isi sebagai berikut : 
-![alt text](image-9.png)
+![alt text](readme-img/image-33.png)
 
 - Secret name : bebas, pada kasus ini : ```code-engine```
 - Secret contents : ```Docker Hub```
@@ -278,31 +277,31 @@ Setelah melakukan proses tag, proses push akan memakan waktu yang cukup lama, se
 - Access Token : Silakan ambil access token anda di akun Docker Hub anda.
 
 - Pergi ke Docker Hub, lalu ke bagian 'Account Settings'
-![alt text](image-10.png)
+![alt text](readme-img/image-34.png)
 
 - Pergi ke tab 'Security'
-![alt text](image-11.png)
+![alt text](readme-img/image-35.png)
 
 - Lalu, tekan tombol biru, 'New Access Token'
-![alt text](image-12.png)
+![alt text](readme-img/image-36.png)
 
 - Isi ```Access Token Description``` dengan nama sama dengan di IBM Cloud yaitu ```code-engine```, Access permissions dibiarkan saja di **Read, Write, Delete.** Lalu tekan tombol biru 'Generate'.
-![alt text](image-13.png)
+![alt text](readme-img/image-37.png)
 
 - Access Token anda ada di bawah, ini adalah contoh:
-![alt text](aa.png)
+![alt text](readme-img/image-38.png)
 
 - Copy token tersebut dan paste di IBM Cloud Code Engine, lalu klik tombol biru 'Create'.
-![alt text](image-15.png)
+![alt text](readme-img/image-39.png)
 
 - Setelah membuat registry secret yang sesuai dengan akun Docker Hub, maka bagian namespace, image name dan tags akan terisi dengan sendirinya. Klik tombol biru 'Done'.
-![alt text](image-16.png)
+![alt text](readme-img/image-40.png)
 
 - Setelahnya, pada bagian 'Code', bagian 'Image reference' akan berisi link repositori Docker Hub anda.
-![alt text](image-17.png)
+![alt text](readme-img/image-41.png)
 
 - Scroll kebawah, pada bagian 'Resource and scaling'
-![alt text](image-18.png)
+![alt text](readme-img/image-42.png)
 
 - CPU dan memory : sesuai kebutuhan, pada kasus ini, yang akan digunakan : ``` 2vCPU / 4GB ```
 
@@ -313,25 +312,25 @@ Setelah melakukan proses tag, proses push akan memakan waktu yang cukup lama, se
 - Max number of instance : Biarkan di angka 10
 
 - Scroll ke paling bawah, bagian 'Image start options'
-![alt text](image-19.png)
+![alt text](readme-img/image-43.png)
 
 - Ubah **listening port dari 8080 ke ```5000```**
 
 - Konfigurasi lainnya tidak perlu diubah, biarkan sedia kala. Sekarang tekan tombol biru 'Create' di tab kanan : 
-![alt text](image-20.png)
+![alt text](readme-img/image-44.png)
 
 - Sekarang, tunggu proses deployment selesai, bisa memakan waktu 5-10 menit.
-![alt text](image-21.png)
+![alt text](readme-img/image-45.png)
 
 - Berikut adalah jika proses deployment berhasil dan sudah selesai.
-![alt text](image-22.png)
+![alt text](readme-img/image-46.png)
 
 - Proses deployment sudah selesai, ambil link utama untuk dilakukan pengetesan, buka bagian 'Domain mappings'
-![alt text](image-23.png)
+![alt text](readme-img/image-47.png)
 
-- Link public tersebut adalah yang akan digunakan untuk melakukan testing.
+- Link public tersebut adalah yang akan digunakan untuk melakukan testing. Disebut juga sebagai API Endpoint.
 
-- Menyesuaikan dengan yang sebelumnya di local yaitu ```http://localhost:5000``` untuk route utama (/) dan ```http://localhost:5000/predict``` untuk route prediksi. Maka untuk kasus kali ini karena sudah ter-deploy : 
+- Menyesuaikan dengan yang sebelumnya di local yaitu ```http://localhost:5000``` untuk route utama (/) dan ```http://localhost:5000/predict``` untuk route prediksi. Maka untuk kasus kali, berikut ini adalah endpoint API dari Flask API yang sudah ter-deploy : 
 
 - Route utama (/) : 
 ```
@@ -344,3 +343,18 @@ https://flask-docker.1i36eco0q6b5.us-south.codeengine.appdomain.cloud
 ```
 
 ## 5. Testing endpoint menggunakan React
+
+- Sebelum pengetesan menggunakan React, buka aplikasi Postman, dan tes endpoint diatas menggunakan tata cara seperti sebelumnya:
+
+- GET ```https://flask-docker.1i36eco0q6b5.us-south.codeengine.appdomain.cloud```
+![alt text](image-48.png)
+Hasil yang keluar, sesuai dengan yang seharusnya berada pada route (/) yaitu tulisan 'Hello World!'
+
+- POST ```https://flask-docker.1i36eco0q6b5.us-south.codeengine.appdomain.cloud/predict```
+![alt text](image-49.png)
+Lakukan post dengan contoh data sebelumnya diatas, dan hasil prediksi pun keluar dengan seharusnya.
+
+
+---
+
+<h3 align="center"> Infinite Learning Indonesia </h3>
