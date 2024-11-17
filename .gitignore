@@ -1,2 +1,46 @@
-/venv
-/__pycache__
+# Byte-compiled / compiled Python files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Temporary files
+*.tmp
+*.log
+*.swp
+*.swo
+*.bak
+*.orig
+
+# Environment files
+.env
+.env.*
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Docker related
+*.env
+**/.idea/
+.dockerignore
+docker-compose.override.yml
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python package files
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Coverage and testing reports
+.
